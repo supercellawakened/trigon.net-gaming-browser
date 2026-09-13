@@ -1,0 +1,1671 @@
+/* =========================================================
+   TRIGON BROWSER
+   style.css
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #07101c;
+  color: #eef7ff;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================================================
+   LOADING SCREEN
+   ========================================================= */
+
+#loadingScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at center, #102844 0%, #050a12 55%, #020409 100%);
+
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+#loadingScreen.hidden {
+  display: none !important;
+}
+
+.loadingBox {
+  width: min(90%, 430px);
+  text-align: center;
+}
+
+.loading-symbol {
+  width: 150px;
+  height: 150px;
+
+  object-fit: contain;
+
+  margin-bottom: 20px;
+
+  border-radius: 20px;
+
+  filter:
+    drop-shadow(0 0 10px #36bfff)
+    drop-shadow(0 0 30px #008cff);
+
+  animation: trigonLoadingSpin 3s linear infinite;
+}
+
+.loadingBox h1 {
+  font-size: 36px;
+  letter-spacing: 8px;
+  margin-bottom: 10px;
+}
+
+.loadingBox p {
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+
+.loadingBar {
+  width: 100%;
+  height: 8px;
+
+  background: rgba(255,255,255,0.08);
+
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#loadingProgress {
+  width: 0%;
+  height: 100%;
+
+  background: #35bfff;
+
+  box-shadow:
+    0 0 10px #35bfff,
+    0 0 25px #008cff;
+
+  transition: width 0.2s ease;
+}
+
+#loadingPercent {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.65;
+}
+
+@keyframes trigonLoadingSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+#loginScreen {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background:
+    radial-gradient(circle at center, #102c4d, #04070c 70%);
+}
+
+.loginBox {
+  width: min(92%, 390px);
+
+  padding: 35px;
+
+  text-align: center;
+
+  border: 1px solid #249fff;
+  border-radius: 25px;
+
+  background: rgba(7, 18, 32, 0.88);
+
+  box-shadow:
+    0 0 20px rgba(0, 157, 255, 0.4),
+    inset 0 0 25px rgba(0, 157, 255, 0.08);
+}
+
+.loginLogo {
+  width: 75px;
+  height: 75px;
+
+  margin: auto auto 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 48px;
+
+  border: 2px solid #35bfff;
+  border-radius: 50%;
+
+  box-shadow: 0 0 25px #009dff;
+}
+
+.loginBox h1 {
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+}
+
+.loginBox > p {
+  opacity: 0.6;
+  margin-bottom: 25px;
+}
+
+.loginBox input,
+.searchBox input,
+.tabManagerCard input,
+.modalBox input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  margin-bottom: 12px;
+
+  color: white;
+
+  background: rgba(255,255,255,0.06);
+
+  border: 1px solid rgba(100,190,255,0.3);
+  border-radius: 12px;
+
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+input:focus {
+  border-color: #35bfff;
+
+  box-shadow:
+    0 0 12px rgba(53,191,255,0.3);
+}
+
+button {
+  border: none;
+}
+
+.loginBox button:not(.textButton) {
+  width: 100%;
+
+  padding: 13px;
+
+  margin-top: 5px;
+
+  color: white;
+
+  background: #087fd1;
+
+  border-radius: 12px;
+
+  font-weight: bold;
+
+  transition: 0.2s ease;
+}
+
+.loginBox button:not(.textButton):hover {
+  background: #1199f0;
+  box-shadow: 0 0 20px rgba(17,153,240,0.45);
+}
+
+.textButton {
+  margin-top: 15px;
+
+  color: #63caff;
+  background: transparent;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+#dashboard {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(0,145,255,0.08), transparent 30%),
+    #07101c;
+}
+
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 65px;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 18px;
+
+  background: rgba(4,10,18,0.94);
+
+  border-bottom: 1px solid rgba(70,180,255,0.18);
+
+  backdrop-filter: blur(15px);
+}
+
+.brand {
+  min-width: 170px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.brandSymbol {
+  font-size: 30px;
+
+  color: #35bfff;
+
+  text-shadow:
+    0 0 10px #35bfff,
+    0 0 25px #008cff;
+}
+
+.browserTabs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  height: 100%;
+}
+
+.browserTab {
+  height: 42px;
+
+  padding: 0 18px;
+
+  color: #8ea4b8;
+
+  background: transparent;
+
+  border-radius: 10px 10px 0 0;
+
+  transition: 0.2s ease;
+}
+
+.browserTab:hover,
+.browserTab.active {
+  color: white;
+
+  background: rgba(50,160,255,0.12);
+
+  box-shadow:
+    inset 0 -2px #35bfff;
+}
+
+.topActions {
+  margin-left: auto;
+
+  display: flex;
+  gap: 8px;
+}
+
+.topActions button {
+  padding: 9px 13px;
+
+  color: white;
+
+  background: rgba(255,255,255,0.07);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  border-radius: 9px;
+}
+
+.topActions button:hover {
+  border-color: #35bfff;
+
+  box-shadow:
+    0 0 12px rgba(53,191,255,0.25);
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  position: fixed;
+
+  top: 65px;
+  bottom: 0;
+  left: 0;
+
+  width: 220px;
+
+  padding: 15px 10px;
+
+  background: rgba(4,10,18,0.95);
+
+  border-right: 1px solid rgba(70,180,255,0.14);
+
+  overflow-y: auto;
+
+  z-index: 900;
+}
+
+.sideButton {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 15px;
+
+  margin-bottom: 5px;
+
+  text-align: left;
+
+  color: #91a7ba;
+
+  background: transparent;
+
+  border-radius: 12px;
+
+  transition: 0.2s ease;
+}
+
+.sideButton:hover {
+  color: white;
+  background: rgba(53,191,255,0.08);
+}
+
+.sideButton.active {
+  color: white;
+
+  background: rgba(53,191,255,0.13);
+
+  box-shadow:
+    inset 3px 0 #35bfff,
+    0 0 15px rgba(53,191,255,0.08);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.mainContent {
+  margin-left: 220px;
+
+  padding:
+    95px
+    30px
+    50px;
+
+  min-height: 100vh;
+}
+
+.page {
+  display: none;
+
+  animation: pageIn 0.25s ease;
+}
+
+.activePage {
+  display: block;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pageHeader {
+  margin-bottom: 25px;
+}
+
+.pageHeader h1 {
+  font-size: clamp(25px, 4vw, 38px);
+
+  margin-bottom: 8px;
+}
+
+.pageHeader p {
+  color: #8297a9;
+}
+
+
+/* =========================================================
+   DASHBOARD CARDS
+   ========================================================= */
+
+.cardGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(230px, 1fr));
+
+  gap: 18px;
+}
+
+.dashboardCard {
+  padding: 23px;
+
+  min-height: 180px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(28,64,94,0.3),
+      rgba(5,15,27,0.8)
+    );
+
+  border: 1px solid rgba(53,191,255,0.15);
+
+  border-radius: 18px;
+
+  transition: 0.25s ease;
+}
+
+.dashboardCard:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(53,191,255,0.5);
+
+  box-shadow:
+    0 0 25px rgba(0,145,255,0.12);
+}
+
+.dashboardCard h2 {
+  margin-bottom: 12px;
+}
+
+.dashboardCard p {
+  min-height: 45px;
+
+  color: #8ba0b2;
+
+  margin-bottom: 18px;
+}
+
+.dashboardCard button,
+.searchBox button,
+#addShortcutButton,
+.securityCard button,
+.tabManagerCard button,
+.accountCard button,
+.testCard button {
+  padding: 11px 16px;
+
+  color: white;
+
+  background: #087fd1;
+
+  border-radius: 10px;
+
+  font-weight: bold;
+
+  transition: 0.2s ease;
+}
+
+.dashboardCard button:hover,
+.searchBox button:hover,
+#addShortcutButton:hover,
+.securityCard button:hover,
+.tabManagerCard button:hover,
+.accountCard button:hover,
+.testCard button:hover {
+  background: #109cf1;
+
+  box-shadow:
+    0 0 18px rgba(16,156,241,0.35);
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.searchBox {
+  max-width: 750px;
+
+  display: flex;
+
+  gap: 10px;
+
+  margin-bottom: 25px;
+}
+
+.searchBox input {
+  margin: 0;
+
+  flex: 1;
+}
+
+.searchBox button {
+  white-space: nowrap;
+}
+
+.searchInfo {
+  color: #7f96aa;
+
+  padding: 20px;
+
+  background: rgba(255,255,255,0.025);
+
+  border-radius: 14px;
+}
+
+
+/* =========================================================
+   SHORTCUTS
+   ========================================================= */
+
+#addShortcutButton {
+  margin-bottom: 20px;
+}
+
+.shortcutGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(190px, 1fr));
+
+  gap: 15px;
+}
+
+.shortcutCard {
+  padding: 20px;
+
+  background: rgba(255,255,255,0.035);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 15px;
+}
+
+.shortcutCard h3 {
+  margin-bottom: 7px;
+}
+
+.shortcutCard p {
+  color: #7f95a7;
+
+  font-size: 13px;
+
+  word-break: break-all;
+
+  margin-bottom: 15px;
+}
+
+.shortcutCard button {
+  padding: 8px 12px;
+
+  color: white;
+
+  background: rgba(53,191,255,0.13);
+
+  border-radius: 8px;
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+   ========================================================= */
+
+#notificationList {
+  display: grid;
+
+  gap: 12px;
+}
+
+.notificationCard {
+  padding: 18px;
+
+  background: rgba(255,255,255,0.035);
+
+  border-left: 3px solid #35bfff;
+
+  border-radius: 10px;
+}
+
+.notificationCard p {
+  margin-top: 6px;
+
+  color: #899fb2;
+}
+
+
+/* =========================================================
+   MODES
+   ========================================================= */
+
+.modeGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(190px, 1fr));
+
+  gap: 15px;
+}
+
+.modeCard {
+  min-height: 140px;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  text-align: left;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.02)
+    );
+
+  border: 1px solid rgba(255,255,255,0.09);
+
+  border-radius: 17px;
+
+  transition: 0.25s ease;
+}
+
+.modeCard strong {
+  font-size: 18px;
+
+  margin-bottom: 8px;
+}
+
+.modeCard span {
+  color: #8196a8;
+
+  font-size: 13px;
+}
+
+.modeCard:hover {
+  transform: translateY(-4px);
+
+  border-color: #35bfff;
+
+  box-shadow:
+    0 0 22px rgba(53,191,255,0.15);
+}
+
+.modeCard.selected {
+  border-color: #35bfff;
+
+  box-shadow:
+    0 0 25px rgba(53,191,255,0.25);
+}
+
+
+/* =========================================================
+   TEST
+   ========================================================= */
+
+.testGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 16px;
+}
+
+.testCard {
+  padding: 22px;
+
+  background: rgba(255,255,255,0.035);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 16px;
+}
+
+.testCard h2 {
+  margin-bottom: 15px;
+}
+
+.testCard div {
+  font-size: 28px;
+
+  margin-bottom: 20px;
+
+  color: #63caff;
+}
+
+.testCard button {
+  width: 100%;
+}
+
+
+/* =========================================================
+   TAB MANAGER
+   ========================================================= */
+
+.tabManagerGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(260px, 1fr));
+
+  gap: 18px;
+}
+
+.tabManagerCard {
+  padding: 22px;
+
+  background: rgba(255,255,255,0.035);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 17px;
+}
+
+.tabManagerCard h2 {
+  margin-bottom: 10px;
+}
+
+.tabManagerCard p {
+  color: #8196a8;
+
+  margin-bottom: 18px;
+}
+
+.tabManagerCard button {
+  width: 100%;
+}
+
+.tabManagerCard input {
+  margin-bottom: 10px;
+}
+
+#comboList {
+  margin-top: 15px;
+
+  display: grid;
+
+  gap: 8px;
+}
+
+.comboItem {
+  padding: 12px;
+
+  background: rgba(53,191,255,0.06);
+
+  border: 1px solid rgba(53,191,255,0.12);
+
+  border-radius: 10px;
+}
+
+.comboItem button {
+  margin-top: 8px;
+}
+
+
+/* =========================================================
+   SECURITY
+   ========================================================= */
+
+.securityStatus {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 22px;
+
+  margin-bottom: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,110,75,0.18),
+      rgba(255,255,255,0.025)
+    );
+
+  border: 1px solid rgba(60,220,150,0.2);
+
+  border-radius: 17px;
+}
+
+.securityIcon {
+  width: 60px;
+  height: 60px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+
+  border-radius: 15px;
+
+  background: rgba(60,220,150,0.08);
+
+  box-shadow:
+    0 0 20px rgba(60,220,150,0.15);
+}
+
+.securityStatus p {
+  color: #8ba0b2;
+
+  margin-top: 5px;
+}
+
+.securityGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(240px, 1fr));
+
+  gap: 16px;
+}
+
+.securityCard {
+  padding: 22px;
+
+  background: rgba(255,255,255,0.035);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 17px;
+}
+
+.securityCard h2 {
+  margin-bottom: 10px;
+}
+
+.securityCard p {
+  min-height: 65px;
+
+  color: #8196a8;
+
+  margin-bottom: 15px;
+}
+
+.securityCard button {
+  width: 100%;
+}
+
+.quarantineList {
+  margin-top: 20px;
+
+  display: grid;
+
+  gap: 10px;
+}
+
+.quarantineItem {
+  padding: 15px;
+
+  background: rgba(255,170,50,0.06);
+
+  border: 1px solid rgba(255,170,50,0.2);
+
+  border-radius: 12px;
+}
+
+
+/* =========================================================
+   ACCOUNT
+   ========================================================= */
+
+.accountCard {
+  max-width: 500px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  background: rgba(255,255,255,0.035);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 20px;
+}
+
+.accountAvatar {
+  width: 75px;
+  height: 75px;
+
+  margin: auto auto 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 35px;
+
+  border-radius: 50%;
+
+  background: rgba(53,191,255,0.1);
+
+  border: 1px solid rgba(53,191,255,0.3);
+}
+
+.accountCard h2 {
+  margin-bottom: 5px;
+}
+
+.accountCard > p {
+  color: #8196a8;
+
+  margin-bottom: 20px;
+}
+
+.accountCard button {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 10px;
+}
+
+.dangerButton {
+  background: #9d3030 !important;
+}
+
+.dangerButton:hover {
+  background: #c83c3c !important;
+}
+
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
+.settingsGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(230px, 1fr));
+
+  gap: 16px;
+}
+
+.settingCard {
+  padding: 20px;
+
+  background: rgba(255,255,255,0.035);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 16px;
+}
+
+.settingCard h2 {
+  margin-bottom: 20px;
+}
+
+.switchRow {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  color: #a3b4c3;
+}
+
+.switchRow input {
+  width: 20px;
+  height: 20px;
+}
+
+
+/* =========================================================
+   MODALS
+   ========================================================= */
+
+.modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 5000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0,0,0,0.72);
+
+  backdrop-filter: blur(8px);
+}
+
+.modalBox {
+  position: relative;
+
+  width: min(100%, 430px);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  padding: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0d2033,
+      #050b13
+    );
+
+  border: 1px solid rgba(53,191,255,0.3);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 0 35px rgba(0,145,255,0.2);
+}
+
+.modalBox h2 {
+  margin-bottom: 12px;
+}
+
+.modalBox p {
+  color: #8da2b4;
+
+  margin-bottom: 15px;
+}
+
+.closeModal {
+  position: absolute;
+
+  top: 12px;
+  right: 14px;
+
+  width: 35px;
+  height: 35px;
+
+  color: #a8bac8;
+
+  background: rgba(255,255,255,0.06);
+
+  border-radius: 50%;
+
+  font-size: 22px;
+}
+
+.closeModal:hover {
+  color: white;
+  background: rgba(255,255,255,0.12);
+}
+
+.modalBox > button:not(.closeModal) {
+  width: 100%;
+
+  padding: 12px;
+
+  color: white;
+
+  background: #087fd1;
+
+  border-radius: 10px;
+
+  font-weight: bold;
+}
+
+.verificationCode {
+  padding: 18px;
+
+  margin: 15px 0;
+
+  text-align: center;
+
+  font-size: 25px;
+
+  font-weight: bold;
+
+  letter-spacing: 6px;
+
+  color: #63caff;
+
+  background: rgba(53,191,255,0.06);
+
+  border: 1px solid rgba(53,191,255,0.2);
+
+  border-radius: 12px;
+}
+
+
+/* =========================================================
+   SECURITY ALERT
+   ========================================================= */
+
+.securityAlert {
+  text-align: center;
+
+  border-color: rgba(255,90,90,0.35);
+
+  box-shadow:
+    0 0 35px rgba(255,50,50,0.15);
+}
+
+.alertIcon {
+  font-size: 50px;
+
+  margin-bottom: 10px;
+}
+
+.securityAlert h2 {
+  color: #ff8888;
+}
+
+.securityAlert button {
+  margin-top: 10px;
+}
+
+#cancelThreatButton {
+  background: rgba(255,255,255,0.08) !important;
+}
+
+
+/* =========================================================
+   TAB LOADING
+   ========================================================= */
+
+.tabLoading {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 10000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(2,7,12,0.82);
+
+  backdrop-filter: blur(7px);
+}
+
+.tabLoadingBox {
+  text-align: center;
+}
+
+.tabLoadingSymbol {
+  font-size: 70px;
+
+  color: #35bfff;
+
+  text-shadow:
+    0 0 12px #35bfff,
+    0 0 30px #008cff;
+
+  animation: tabPulse 1s ease-in-out infinite;
+}
+
+.tabLoadingBox p {
+  margin-top: 10px;
+
+  color: #9ab0c1;
+}
+
+@keyframes tabPulse {
+  0% {
+    transform: scale(0.9) rotate(0deg);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scale(1.1) rotate(180deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9) rotate(360deg);
+    opacity: 0.55;
+  }
+}
+
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+
+.mobileNav {
+  display: none;
+}
+
+
+/* =========================================================
+   BLUE MODE
+   ========================================================= */
+
+body.mode-blue {
+  --accent: #249fff;
+}
+
+body.mode-blue .brandSymbol,
+body.mode-blue .tabLoadingSymbol {
+  color: #35bfff;
+}
+
+
+/* =========================================================
+   RED MODE
+   ========================================================= */
+
+body.mode-red {
+  --accent: #ff4141;
+}
+
+body.mode-red .brandSymbol,
+body.mode-red .tabLoadingSymbol {
+  color: #ff4141;
+
+  text-shadow:
+    0 0 12px #ff4141,
+    0 0 30px #d00000;
+}
+
+body.mode-red .sideButton.active {
+  box-shadow:
+    inset 3px 0 #ff4141,
+    0 0 15px rgba(255,65,65,0.08);
+}
+
+body.mode-red .browserTab:hover,
+body.mode-red .browserTab.active {
+  box-shadow:
+    inset 0 -2px #ff4141;
+}
+
+
+/* =========================================================
+   TRIGON MODE
+   ========================================================= */
+
+body.mode-trigon {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(0,170,255,0.13),
+      transparent 35%
+    ),
+    #031321;
+}
+
+body.mode-trigon .sidebar,
+body.mode-trigon .topbar {
+  box-shadow:
+    0 0 25px rgba(0,180,255,0.08);
+}
+
+body.mode-trigon .dashboardCard:hover,
+body.mode-trigon .modeCard:hover,
+body.mode-trigon .tabManagerCard:hover,
+body.mode-trigon .securityCard:hover {
+  box-shadow:
+    0 0 30px rgba(0,200,255,0.25),
+    0 0 70px rgba(0,100,255,0.1);
+}
+
+
+/* =========================================================
+   ESS MODE
+   ========================================================= */
+
+body.mode-ess {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255,30,30,0.12),
+      transparent 35%
+    ),
+    #160606;
+}
+
+body.mode-ess .brandSymbol,
+body.mode-ess .tabLoadingSymbol {
+  color: #ff3030;
+
+  text-shadow:
+    0 0 15px #ff3030,
+    0 0 35px #ff0000;
+}
+
+body.mode-ess .sideButton.active {
+  box-shadow:
+    inset 3px 0 #ff3030,
+    0 0 20px rgba(255,30,30,0.15);
+}
+
+body.mode-ess .browserTab:hover,
+body.mode-ess .browserTab.active {
+  box-shadow:
+    inset 0 -2px #ff3030;
+}
+
+
+/* =========================================================
+   CUSTOM MODE
+   ========================================================= */
+
+body.mode-custom {
+  background: #090d14;
+}
+
+
+/* =========================================================
+   BOB MODE
+   ========================================================= */
+
+body.mode-bob {
+  background:
+    radial-gradient(
+      circle at center,
+      #18233a,
+      #05070d 70%
+    );
+}
+
+
+/* =========================================================
+   GLOW DISABLED
+   ========================================================= */
+
+body.noGlow *,
+body.noGlow *::before,
+body.noGlow *::after {
+  box-shadow: none !important;
+
+  text-shadow: none !important;
+
+  filter: none !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .brand {
+    min-width: auto;
+  }
+
+  .brand span:last-child {
+    display: none;
+  }
+
+  .sidebar {
+    width: 75px;
+  }
+
+  .sideButton {
+    justify-content: center;
+
+    padding: 14px 5px;
+  }
+
+  .sideButton span {
+    display: none;
+  }
+
+  .mainContent {
+    margin-left: 75px;
+  }
+
+  .browserTab {
+    padding: 0 10px;
+  }
+
+  .topActions {
+    display: none;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .topbar {
+    height: 58px;
+
+    padding: 0 10px;
+  }
+
+  .browserTabs {
+    margin-left: auto;
+  }
+
+  .browserTab {
+    font-size: 12px;
+
+    padding: 0 8px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .mainContent {
+    margin-left: 0;
+
+    padding:
+      78px
+      15px
+      80px;
+  }
+
+  .mobileNav {
+    position: fixed;
+
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    z-index: 3000;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-around;
+
+    background: rgba(5,12,20,0.94);
+
+    border: 1px solid rgba(53,191,255,0.18);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+      0 0 25px rgba(0,0,0,0.35);
+  }
+
+  .mobileNav button {
+    width: 48px;
+    height: 45px;
+
+    color: #8ca4b7;
+
+    background: transparent;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+  }
+
+  .mobileNav button:hover,
+  .mobileNav button.active {
+    color: white;
+
+    background: rgba(53,191,255,0.13);
+  }
+
+  .searchBox {
+    flex-direction: column;
+  }
+
+  .searchBox button {
+    width: 100%;
+  }
+
+  .securityStatus {
+    align-items: flex-start;
+  }
+
+  .loading-symbol {
+    width: 120px;
+    height: 120px;
+  }
+
+  .loadingBox h1 {
+    font-size: 27px;
+
+    letter-spacing: 5px;
+  }
+}
+
+
+@media (max-width: 420px) {
+
+  .browserTabs {
+    gap: 2px;
+  }
+
+  .browserTab {
+    padding: 0 6px;
+
+    font-size: 11px;
+  }
+
+  .pageHeader h1 {
+    font-size: 26px;
+  }
+
+  .dashboardCard,
+  .securityCard,
+  .tabManagerCard,
+  .testCard {
+    padding: 18px;
+  }
+
+  .modalBox {
+    padding: 23px 18px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #35bfff;
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050a11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #173a55;
+
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #225878;
+}
