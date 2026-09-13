@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trigon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================= LOADING SCREEN ================= -->
+  <div id="loadingScreen">
+    <div class="loadingBox">
+      <img
+        id="loadingSymbol"
+        class="loading-symbol"
+        src="image-1789132039738.jpg"
+        alt="Trigon loading"
+      >
+
+      <h1>TRIGON</h1>
+      <p id="loadingText">Starting Trigon...</p>
+
+      <div class="loadingBar">
+        <div id="loadingProgress"></div>
+      </div>
+
+      <div id="loadingPercent">0%</div>
+    </div>
+  </div>
+
+
+  <!-- ================= LOGIN ================= -->
+  <section id="loginScreen" class="screen hidden">
+    <div class="loginBox">
+      <div class="loginLogo">∆</div>
+
+      <h1>TRIGON</h1>
+      <p>Secure Browser System</p>
+
+      <input
+        id="usernameInput"
+        type="text"
+        placeholder="Username"
+        autocomplete="off"
+      >
+
+      <input
+        id="passwordInput"
+        type="password"
+        placeholder="Password"
+      >
+
+      <button id="loginButton">LOGIN</button>
+
+      <button id="forgotPasswordButton" class="textButton">
+        Forgot Password?
+      </button>
+    </div>
+  </section>
+
+
+  <!-- ================= DASHBOARD ================= -->
+  <div id="dashboard" class="hidden">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+      <div class="brand">
+        <span class="brandSymbol">∆</span>
+        <span>TRIGON</span>
+      </div>
+
+      <div class="browserTabs">
+
+        <button class="browserTab active" data-page="home">
+          Home
+        </button>
+
+        <button class="browserTab" data-page="search">
+          Search
+        </button>
+
+        <button class="browserTab" data-page="shortcuts">
+          Shortcuts
+        </button>
+
+      </div>
+
+      <div class="topActions">
+
+        <button id="googleButton">
+          Google
+        </button>
+
+        <button id="chatgptButton">
+          ChatGPT
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <button class="sideButton active" data-page="home">
+        🏠
+        <span>Home</span>
+      </button>
+
+      <button class="sideButton" data-page="search">
+        🔎
+        <span>Search</span>
+      </button>
+
+      <button class="sideButton" data-page="shortcuts">
+        🔗
+        <span>Shortcuts</span>
+      </button>
+
+      <button class="sideButton" data-page="notifications">
+        🔔
+        <span>Notifications</span>
+      </button>
+
+      <button class="sideButton" data-page="modes">
+        🎨
+        <span>Modes</span>
+      </button>
+
+      <button class="sideButton" data-page="test">
+        ⚡
+        <span>Test</span>
+      </button>
+
+      <button class="sideButton" data-page="tabs">
+        🗂️
+        <span>Tab Manager</span>
+      </button>
+
+      <button class="sideButton" data-page="security">
+        🛡️
+        <span>Security</span>
+      </button>
+
+      <button class="sideButton" data-page="account">
+        👤
+        <span>Account</span>
+      </button>
+
+      <button class="sideButton" data-page="settings">
+        ⚙️
+        <span>Settings</span>
+      </button>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="mainContent">
+
+
+      <!-- HOME -->
+      <section id="page-home" class="page activePage">
+
+        <div class="pageHeader">
+          <h1>Welcome to Trigon ∆</h1>
+          <p>Your customizable browser dashboard.</p>
+        </div>
+
+        <div class="cardGrid">
+
+          <div class="dashboardCard">
+            <h2>🔎 Search</h2>
+            <p>Search the web using Google.</p>
+            <button onclick="showPage('search')">
+              Search
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>🔗 Shortcuts</h2>
+            <p>Open your saved websites quickly.</p>
+            <button onclick="showPage('shortcuts')">
+              Open Shortcuts
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>🎨 Modes</h2>
+            <p>Customize the Trigon experience.</p>
+            <button onclick="showPage('modes')">
+              Modes
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>🗂️ Tabs</h2>
+            <p>Manage and combine browser tabs.</p>
+            <button onclick="showPage('tabs')">
+              Tab Manager
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>🛡️ Security</h2>
+            <p>Trigon Helper and defensive security tools.</p>
+            <button onclick="showPage('security')">
+              Security Center
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>👤 Account</h2>
+            <p>Manage your account and recovery settings.</p>
+            <button onclick="showPage('account')">
+              Account
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SEARCH ================= -->
+      <section id="page-search" class="page">
+
+        <div class="pageHeader">
+          <h1>Search</h1>
+          <p>Search with Google.</p>
+        </div>
+
+        <div class="searchBox">
+
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search Google..."
+          >
+
+          <button id="searchButton">
+            🔎 Search
+          </button>
+
+        </div>
+
+        <div class="searchInfo">
+          <p>
+            Trigon uses Google as its search engine.
+          </p>
+
+          <p id="searchStatus">
+            Ready.
+          </p>
+        </div>
+
+      </section>
+
+
+      <!-- ================= SHORTCUTS ================= -->
+      <section id="page-shortcuts" class="page">
+
+        <div class="pageHeader">
+          <h1>Shortcuts</h1>
+          <p>Your saved websites.</p>
+        </div>
+
+        <button id="addShortcutButton">
+          ＋ Add Shortcut
+        </button>
+
+        <div id="shortcutList" class="shortcutGrid"></div>
+
+      </section>
+
+
+      <!-- ================= NOTIFICATIONS ================= -->
+      <section id="page-notifications" class="page">
+
+        <div class="pageHeader">
+          <h1>Notifications</h1>
+          <p>Trigon system notifications.</p>
+        </div>
+
+        <div id="notificationList">
+          <div class="notificationCard">
+            <strong>∆ Trigon</strong>
+            <p>Welcome to your Trigon browser dashboard.</p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ================= MODES ================= -->
+      <section id="page-modes" class="page">
+
+        <div class="pageHeader">
+          <h1>Modes</h1>
+          <p>Choose your Trigon experience.</p>
+        </div>
+
+        <div id="modeList" class="modeGrid">
+
+          <button class="modeCard" data-mode="blue">
+            <strong>Default Blue</strong>
+            <span>Blue Trigon theme</span>
+          </button>
+
+          <button class="modeCard" data-mode="red">
+            <strong>Default Red</strong>
+            <span>Red Trigon theme</span>
+          </button>
+
+          <button class="modeCard" data-mode="custom">
+            <strong>Default Custom</strong>
+            <span>Custom settings</span>
+          </button>
+
+          <button class="modeCard" data-mode="trigon">
+            <strong>Trigon</strong>
+            <span>∆ Blue glow mode</span>
+          </button>
+
+          <button class="modeCard" data-mode="ess">
+            <strong>ESS</strong>
+            <span>Red security style</span>
+          </button>
+
+          <button class="modeCard" data-mode="bob">
+            <strong>BOB</strong>
+            <span>Experimental mode</span>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= TEST ================= -->
+      <section id="page-test" class="page">
+
+        <div class="pageHeader">
+          <h1>Trigon Test</h1>
+          <p>Check browser performance.</p>
+        </div>
+
+        <div class="testGrid">
+
+          <div class="testCard">
+            <h2>📡 Ping</h2>
+            <div id="pingResult">-- ms</div>
+            <button id="pingTestButton">
+              Test Ping
+            </button>
+          </div>
+
+          <div class="testCard">
+            <h2>🎮 FPS</h2>
+            <div id="fpsResult">-- FPS</div>
+            <button id="fpsTestButton">
+              Test FPS
+            </button>
+          </div>
+
+          <div class="testCard">
+            <h2>⚡ Performance</h2>
+            <div id="performanceResult">Ready</div>
+            <button id="performanceTestButton">
+              Run Test
+            </button>
+          </div>
+
+          <div class="testCard">
+            <h2>💻 Browser/System</h2>
+            <div id="systemResult">Ready</div>
+            <button id="systemTestButton">
+              Check System
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= TAB MANAGER ================= -->
+      <section id="page-tabs" class="page">
+
+        <div class="pageHeader">
+          <h1>Tab Manager</h1>
+          <p>Manage Trigon browser tabs.</p>
+        </div>
+
+
+        <div class="tabManagerGrid">
+
+          <div class="tabManagerCard">
+
+            <h2>🌐 Google</h2>
+
+            <p>
+              Open Google in a browser tab.
+            </p>
+
+            <button id="openGoogleTab">
+              Open Google
+            </button>
+
+          </div>
+
+
+          <div class="tabManagerCard">
+
+            <h2>🤖 ChatGPT</h2>
+
+            <p>
+              Open the official ChatGPT website.
+            </p>
+
+            <button id="openChatGPTTab">
+              Open ChatGPT
+            </button>
+
+          </div>
+
+
+          <div class="tabManagerCard">
+
+            <h2>🔗 Tab Combination</h2>
+
+            <p>
+              Combine 2 or more saved tabs into one launch action.
+            </p>
+
+            <input
+              id="comboName"
+              type="text"
+              placeholder="Combination name"
+            >
+
+            <input
+              id="comboUrls"
+              type="text"
+              placeholder="URLs separated by commas"
+            >
+
+            <button id="createComboButton">
+              ＋ Create Combination
+            </button>
+
+            <div id="comboList"></div>
+
+          </div>
+
+
+          <div class="tabManagerCard">
+
+            <h2>🛡️ Parallel Tab</h2>
+
+            <p>
+              Defensive isolation mode for suspicious browser content.
+            </p>
+
+            <button id="parallelTabButton">
+              Open Parallel Tab
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SECURITY ================= -->
+      <section id="page-security" class="page">
+
+        <div class="pageHeader">
+          <h1>Security Center</h1>
+          <p>Trigon defensive security tools.</p>
+        </div>
+
+
+        <div class="securityStatus">
+
+          <div class="securityIcon">
+            🛡️
+          </div>
+
+          <div>
+            <h2 id="securityStatusTitle">
+              Protection Ready
+            </h2>
+
+            <p id="securityStatusText">
+              Trigon is ready to isolate suspicious browser content.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="securityGrid">
+
+          <div class="securityCard">
+
+            <h2>∆ Trigon Helper</h2>
+
+            <p>
+              Helps respond to suspicious browser activity by
+              isolating or closing the affected browser tab.
+            </p>
+
+            <button id="helperButton">
+              Run Helper
+            </button>
+
+          </div>
+
+
+          <div class="securityCard">
+
+            <h2>🔒 Quarantine</h2>
+
+            <p>
+              View items that Trigon has isolated.
+            </p>
+
+            <button id="quarantineButton">
+              Open Quarantine
+            </button>
+
+          </div>
+
+
+          <div class="securityCard">
+
+            <h2>🔍 Security Check</h2>
+
+            <p>
+              Run a defensive browser security check.
+            </p>
+
+            <button id="securityCheckButton">
+              Run Check
+            </button>
+
+          </div>
+
+        </div>
+
+        <div id="quarantineList" class="quarantineList"></div>
+
+      </section>
+
+
+      <!-- ================= ACCOUNT ================= -->
+      <section id="page-account" class="page">
+
+        <div class="pageHeader">
+          <h1>Account</h1>
+          <p>Manage your Trigon account.</p>
+        </div>
+
+
+        <div class="accountCard">
+
+          <div class="accountAvatar">
+            👤
+          </div>
+
+          <h2 id="accountUsername">
+            Guest
+          </h2>
+
+          <p>
+            Trigon account
+          </p>
+
+          <button id="switchAccountButton">
+            Switch Account
+          </button>
+
+          <button id="createAccountButton">
+            ＋ Create Account
+          </button>
+
+          <button id="recoveryEmailButton">
+            Recovery Email
+          </button>
+
+          <button id="resetPasswordButton">
+            Reset Password
+          </button>
+
+          <button id="logoutButton" class="dangerButton">
+            Log Out
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SETTINGS ================= -->
+      <section id="page-settings" class="page">
+
+        <div class="pageHeader">
+          <h1>Settings</h1>
+          <p>Customize Trigon.</p>
+        </div>
+
+
+        <div class="settingsGrid">
+
+          <div class="settingCard">
+
+            <h2>🔊 Sounds</h2>
+
+            <label class="switchRow">
+              <span>Enable sounds</span>
+              <input
+                id="soundToggle"
+                type="checkbox"
+                checked
+              >
+            </label>
+
+          </div>
+
+
+          <div class="settingCard">
+
+            <h2>✨ Glow</h2>
+
+            <label class="switchRow">
+              <span>Enable glow effects</span>
+              <input
+                id="glowToggle"
+                type="checkbox"
+                checked
+              >
+            </label>
+
+          </div>
+
+
+          <div class="settingCard">
+
+            <h2>🎬 Startup Animation</h2>
+
+            <label class="switchRow">
+              <span>Enable startup animation</span>
+              <input
+                id="startupToggle"
+                type="checkbox"
+                checked
+              >
+            </label>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- ================= MOBILE NAV ================= -->
+    <nav class="mobileNav">
+
+      <button data-page="home">🏠</button>
+      <button data-page="search">🔎</button>
+      <button data-page="tabs">🗂️</button>
+      <button data-page="security">🛡️</button>
+      <button data-page="account">👤</button>
+
+    </nav>
+
+  </div>
+
+
+  <!-- ================= SHORTCUT MODAL ================= -->
+  <div id="shortcutModal" class="modal hidden">
+
+    <div class="modalBox">
+
+      <button class="closeModal" data-close="shortcutModal">
+        ×
+      </button>
+
+      <h2>Add Shortcut</h2>
+
+      <input
+        id="shortcutName"
+        type="text"
+        placeholder="Website name"
+      >
+
+      <input
+        id="shortcutUrl"
+        type="url"
+        placeholder="https://example.com"
+      >
+
+      <button id="saveShortcutButton">
+        Save Shortcut
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= CREATE ACCOUNT MODAL ================= -->
+  <div id="createAccountModal" class="modal hidden">
+
+    <div class="modalBox">
+
+      <button class="closeModal" data-close="createAccountModal">
+        ×
+      </button>
+
+      <h2>Create Account</h2>
+
+      <p>
+        Your Trigon verification code:
+      </p>
+
+      <div id="accountCode" class="verificationCode">
+        ------
+      </div>
+
+      <p>
+        Email this code to Trigon for manual approval.
+      </p>
+
+      <input
+        id="newAccountName"
+        type="text"
+        placeholder="New username"
+      >
+
+      <button id="generateAccountButton">
+        Generate Code
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= RECOVERY EMAIL MODAL ================= -->
+  <div id="recoveryEmailModal" class="modal hidden">
+
+    <div class="modalBox">
+
+      <button class="closeModal" data-close="recoveryEmailModal">
+        ×
+      </button>
+
+      <h2>Recovery Email</h2>
+
+      <p>
+        Add an email address for account recovery.
+      </p>
+
+      <input
+        id="recoveryEmailInput"
+        type="email"
+        placeholder="Recovery email"
+      >
+
+      <button id="saveRecoveryEmailButton">
+        Save Recovery Email
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= RESET PASSWORD MODAL ================= -->
+  <div id="resetPasswordModal" class="modal hidden">
+
+    <div class="modalBox">
+
+      <button class="closeModal" data-close="resetPasswordModal">
+        ×
+      </button>
+
+      <h2>Reset Password</h2>
+
+      <input
+        id="oldPasswordInput"
+        type="password"
+        placeholder="Current password"
+      >
+
+      <input
+        id="newPasswordInput"
+        type="password"
+        placeholder="New password"
+      >
+
+      <input
+        id="confirmPasswordInput"
+        type="password"
+        placeholder="Confirm new password"
+      >
+
+      <button id="savePasswordButton">
+        Update Password
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= SECURITY ALERT ================= -->
+  <div id="securityAlertModal" class="modal hidden">
+
+    <div class="modalBox securityAlert">
+
+      <div class="alertIcon">
+        🛡️
+      </div>
+
+      <h2 id="securityAlertTitle">
+        Suspicious Activity Detected
+      </h2>
+
+      <p id="securityAlertText">
+        Trigon has isolated suspicious browser content.
+      </p>
+
+      <button id="isolateThreatButton">
+        Isolate & Close
+      </button>
+
+      <button id="cancelThreatButton">
+        Cancel
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= TAB LOADING ================= -->
+  <div id="tabLoading" class="tabLoading hidden">
+
+    <div class="tabLoadingBox">
+
+      <div class="tabLoadingSymbol">
+        ∆
+      </div>
+
+      <p id="tabLoadingText">
+        Loading tab...
+      </p>
+
+    </div>
+
+  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trigon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================= LOADING SCREEN ================= -->
+  <div id="loadingScreen">
+    <div class="loadingBox">
+      <img
+        id="loadingSymbol"
+        class="loading-symbol"
+        src="image-1789132039738.jpg"
+        alt="Trigon loading"
+      >
+
+      <h1>TRIGON</h1>
+      <p id="loadingText">Starting Trigon...</p>
+
+      <div class="loadingBar">
+        <div id="loadingProgress"></div>
+      </div>
+
+      <div id="loadingPercent">0%</div>
+    </div>
+  </div>
+
+
+  <!-- ================= LOGIN ================= -->
+  <section id="loginScreen" class="screen hidden">
+    <div class="loginBox">
+      <div class="loginLogo">∆</div>
+
+      <h1>TRIGON</h1>
+      <p>Secure Browser System</p>
+
+      <input
+        id="usernameInput"
+        type="text"
+        placeholder="Username"
+        autocomplete="off"
+      >
+
+      <input
+        id="passwordInput"
+        type="password"
+        placeholder="Password"
+      >
+
+      <button id="loginButton">LOGIN</button>
+
+      <button id="forgotPasswordButton" class="textButton">
+        Forgot Password?
+      </button>
+    </div>
+  </section>
+
+
+  <!-- ================= DASHBOARD ================= -->
+  <div id="dashboard" class="hidden">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+      <div class="brand">
+        <span class="brandSymbol">∆</span>
+        <span>TRIGON</span>
+      </div>
+
+      <div class="browserTabs">
+
+        <button class="browserTab active" data-page="home">
+          Home
+        </button>
+
+        <button class="browserTab" data-page="search">
+          Search
+        </button>
+
+        <button class="browserTab" data-page="shortcuts">
+          Shortcuts
+        </button>
+
+      </div>
+
+      <div class="topActions">
+
+        <button id="googleButton">
+          Google
+        </button>
+
+        <button id="chatgptButton">
+          ChatGPT
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <button class="sideButton active" data-page="home">
+        🏠
+        <span>Home</span>
+      </button>
+
+      <button class="sideButton" data-page="search">
+        🔎
+        <span>Search</span>
+      </button>
+
+      <button class="sideButton" data-page="shortcuts">
+        🔗
+        <span>Shortcuts</span>
+      </button>
+
+      <button class="sideButton" data-page="notifications">
+        🔔
+        <span>Notifications</span>
+      </button>
+
+      <button class="sideButton" data-page="modes">
+        🎨
+        <span>Modes</span>
+      </button>
+
+      <button class="sideButton" data-page="test">
+        ⚡
+        <span>Test</span>
+      </button>
+
+      <button class="sideButton" data-page="tabs">
+        🗂️
+        <span>Tab Manager</span>
+      </button>
+
+      <button class="sideButton" data-page="security">
+        🛡️
+        <span>Security</span>
+      </button>
+
+      <button class="sideButton" data-page="account">
+        👤
+        <span>Account</span>
+      </button>
+
+      <button class="sideButton" data-page="settings">
+        ⚙️
+        <span>Settings</span>
+      </button>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="mainContent">
+
+
+      <!-- HOME -->
+      <section id="page-home" class="page activePage">
+
+        <div class="pageHeader">
+          <h1>Welcome to Trigon ∆</h1>
+          <p>Your customizable browser dashboard.</p>
+        </div>
+
+        <div class="cardGrid">
+
+          <div class="dashboardCard">
+            <h2>🔎 Search</h2>
+            <p>Search the web using Google.</p>
+            <button onclick="showPage('search')">
+              Search
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>🔗 Shortcuts</h2>
+            <p>Open your saved websites quickly.</p>
+            <button onclick="showPage('shortcuts')">
+              Open Shortcuts
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>🎨 Modes</h2>
+            <p>Customize the Trigon experience.</p>
+            <button onclick="showPage('modes')">
+              Modes
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>🗂️ Tabs</h2>
+            <p>Manage and combine browser tabs.</p>
+            <button onclick="showPage('tabs')">
+              Tab Manager
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>🛡️ Security</h2>
+            <p>Trigon Helper and defensive security tools.</p>
+            <button onclick="showPage('security')">
+              Security Center
+            </button>
+          </div>
+
+          <div class="dashboardCard">
+            <h2>👤 Account</h2>
+            <p>Manage your account and recovery settings.</p>
+            <button onclick="showPage('account')">
+              Account
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SEARCH ================= -->
+      <section id="page-search" class="page">
+
+        <div class="pageHeader">
+          <h1>Search</h1>
+          <p>Search with Google.</p>
+        </div>
+
+        <div class="searchBox">
+
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search Google..."
+          >
+
+          <button id="searchButton">
+            🔎 Search
+          </button>
+
+        </div>
+
+        <div class="searchInfo">
+          <p>
+            Trigon uses Google as its search engine.
+          </p>
+
+          <p id="searchStatus">
+            Ready.
+          </p>
+        </div>
+
+      </section>
+
+
+      <!-- ================= SHORTCUTS ================= -->
+      <section id="page-shortcuts" class="page">
+
+        <div class="pageHeader">
+          <h1>Shortcuts</h1>
+          <p>Your saved websites.</p>
+        </div>
+
+        <button id="addShortcutButton">
+          ＋ Add Shortcut
+        </button>
+
+        <div id="shortcutList" class="shortcutGrid"></div>
+
+      </section>
+
+
+      <!-- ================= NOTIFICATIONS ================= -->
+      <section id="page-notifications" class="page">
+
+        <div class="pageHeader">
+          <h1>Notifications</h1>
+          <p>Trigon system notifications.</p>
+        </div>
+
+        <div id="notificationList">
+          <div class="notificationCard">
+            <strong>∆ Trigon</strong>
+            <p>Welcome to your Trigon browser dashboard.</p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ================= MODES ================= -->
+      <section id="page-modes" class="page">
+
+        <div class="pageHeader">
+          <h1>Modes</h1>
+          <p>Choose your Trigon experience.</p>
+        </div>
+
+        <div id="modeList" class="modeGrid">
+
+          <button class="modeCard" data-mode="blue">
+            <strong>Default Blue</strong>
+            <span>Blue Trigon theme</span>
+          </button>
+
+          <button class="modeCard" data-mode="red">
+            <strong>Default Red</strong>
+            <span>Red Trigon theme</span>
+          </button>
+
+          <button class="modeCard" data-mode="custom">
+            <strong>Default Custom</strong>
+            <span>Custom settings</span>
+          </button>
+
+          <button class="modeCard" data-mode="trigon">
+            <strong>Trigon</strong>
+            <span>∆ Blue glow mode</span>
+          </button>
+
+          <button class="modeCard" data-mode="ess">
+            <strong>ESS</strong>
+            <span>Red security style</span>
+          </button>
+
+          <button class="modeCard" data-mode="bob">
+            <strong>BOB</strong>
+            <span>Experimental mode</span>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= TEST ================= -->
+      <section id="page-test" class="page">
+
+        <div class="pageHeader">
+          <h1>Trigon Test</h1>
+          <p>Check browser performance.</p>
+        </div>
+
+        <div class="testGrid">
+
+          <div class="testCard">
+            <h2>📡 Ping</h2>
+            <div id="pingResult">-- ms</div>
+            <button id="pingTestButton">
+              Test Ping
+            </button>
+          </div>
+
+          <div class="testCard">
+            <h2>🎮 FPS</h2>
+            <div id="fpsResult">-- FPS</div>
+            <button id="fpsTestButton">
+              Test FPS
+            </button>
+          </div>
+
+          <div class="testCard">
+            <h2>⚡ Performance</h2>
+            <div id="performanceResult">Ready</div>
+            <button id="performanceTestButton">
+              Run Test
+            </button>
+          </div>
+
+          <div class="testCard">
+            <h2>💻 Browser/System</h2>
+            <div id="systemResult">Ready</div>
+            <button id="systemTestButton">
+              Check System
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= TAB MANAGER ================= -->
+      <section id="page-tabs" class="page">
+
+        <div class="pageHeader">
+          <h1>Tab Manager</h1>
+          <p>Manage Trigon browser tabs.</p>
+        </div>
+
+
+        <div class="tabManagerGrid">
+
+          <div class="tabManagerCard">
+
+            <h2>🌐 Google</h2>
+
+            <p>
+              Open Google in a browser tab.
+            </p>
+
+            <button id="openGoogleTab">
+              Open Google
+            </button>
+
+          </div>
+
+
+          <div class="tabManagerCard">
+
+            <h2>🤖 ChatGPT</h2>
+
+            <p>
+              Open the official ChatGPT website.
+            </p>
+
+            <button id="openChatGPTTab">
+              Open ChatGPT
+            </button>
+
+          </div>
+
+
+          <div class="tabManagerCard">
+
+            <h2>🔗 Tab Combination</h2>
+
+            <p>
+              Combine 2 or more saved tabs into one launch action.
+            </p>
+
+            <input
+              id="comboName"
+              type="text"
+              placeholder="Combination name"
+            >
+
+            <input
+              id="comboUrls"
+              type="text"
+              placeholder="URLs separated by commas"
+            >
+
+            <button id="createComboButton">
+              ＋ Create Combination
+            </button>
+
+            <div id="comboList"></div>
+
+          </div>
+
+
+          <div class="tabManagerCard">
+
+            <h2>🛡️ Parallel Tab</h2>
+
+            <p>
+              Defensive isolation mode for suspicious browser content.
+            </p>
+
+            <button id="parallelTabButton">
+              Open Parallel Tab
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SECURITY ================= -->
+      <section id="page-security" class="page">
+
+        <div class="pageHeader">
+          <h1>Security Center</h1>
+          <p>Trigon defensive security tools.</p>
+        </div>
+
+
+        <div class="securityStatus">
+
+          <div class="securityIcon">
+            🛡️
+          </div>
+
+          <div>
+            <h2 id="securityStatusTitle">
+              Protection Ready
+            </h2>
+
+            <p id="securityStatusText">
+              Trigon is ready to isolate suspicious browser content.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="securityGrid">
+
+          <div class="securityCard">
+
+            <h2>∆ Trigon Helper</h2>
+
+            <p>
+              Helps respond to suspicious browser activity by
+              isolating or closing the affected browser tab.
+            </p>
+
+            <button id="helperButton">
+              Run Helper
+            </button>
+
+          </div>
+
+
+          <div class="securityCard">
+
+            <h2>🔒 Quarantine</h2>
+
+            <p>
+              View items that Trigon has isolated.
+            </p>
+
+            <button id="quarantineButton">
+              Open Quarantine
+            </button>
+
+          </div>
+
+
+          <div class="securityCard">
+
+            <h2>🔍 Security Check</h2>
+
+            <p>
+              Run a defensive browser security check.
+            </p>
+
+            <button id="securityCheckButton">
+              Run Check
+            </button>
+
+          </div>
+
+        </div>
+
+        <div id="quarantineList" class="quarantineList"></div>
+
+      </section>
+
+
+      <!-- ================= ACCOUNT ================= -->
+      <section id="page-account" class="page">
+
+        <div class="pageHeader">
+          <h1>Account</h1>
+          <p>Manage your Trigon account.</p>
+        </div>
+
+
+        <div class="accountCard">
+
+          <div class="accountAvatar">
+            👤
+          </div>
+
+          <h2 id="accountUsername">
+            Guest
+          </h2>
+
+          <p>
+            Trigon account
+          </p>
+
+          <button id="switchAccountButton">
+            Switch Account
+          </button>
+
+          <button id="createAccountButton">
+            ＋ Create Account
+          </button>
+
+          <button id="recoveryEmailButton">
+            Recovery Email
+          </button>
+
+          <button id="resetPasswordButton">
+            Reset Password
+          </button>
+
+          <button id="logoutButton" class="dangerButton">
+            Log Out
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SETTINGS ================= -->
+      <section id="page-settings" class="page">
+
+        <div class="pageHeader">
+          <h1>Settings</h1>
+          <p>Customize Trigon.</p>
+        </div>
+
+
+        <div class="settingsGrid">
+
+          <div class="settingCard">
+
+            <h2>🔊 Sounds</h2>
+
+            <label class="switchRow">
+              <span>Enable sounds</span>
+              <input
+                id="soundToggle"
+                type="checkbox"
+                checked
+              >
+            </label>
+
+          </div>
+
+
+          <div class="settingCard">
+
+            <h2>✨ Glow</h2>
+
+            <label class="switchRow">
+              <span>Enable glow effects</span>
+              <input
+                id="glowToggle"
+                type="checkbox"
+                checked
+              >
+            </label>
+
+          </div>
+
+
+          <div class="settingCard">
+
+            <h2>🎬 Startup Animation</h2>
+
+            <label class="switchRow">
+              <span>Enable startup animation</span>
+              <input
+                id="startupToggle"
+                type="checkbox"
+                checked
+              >
+            </label>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- ================= MOBILE NAV ================= -->
+    <nav class="mobileNav">
+
+      <button data-page="home">🏠</button>
+      <button data-page="search">🔎</button>
+      <button data-page="tabs">🗂️</button>
+      <button data-page="security">🛡️</button>
+      <button data-page="account">👤</button>
+
+    </nav>
+
+  </div>
+
+
+  <!-- ================= SHORTCUT MODAL ================= -->
+  <div id="shortcutModal" class="modal hidden">
+
+    <div class="modalBox">
+
+      <button class="closeModal" data-close="shortcutModal">
+        ×
+      </button>
+
+      <h2>Add Shortcut</h2>
+
+      <input
+        id="shortcutName"
+        type="text"
+        placeholder="Website name"
+      >
+
+      <input
+        id="shortcutUrl"
+        type="url"
+        placeholder="https://example.com"
+      >
+
+      <button id="saveShortcutButton">
+        Save Shortcut
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= CREATE ACCOUNT MODAL ================= -->
+  <div id="createAccountModal" class="modal hidden">
+
+    <div class="modalBox">
+
+      <button class="closeModal" data-close="createAccountModal">
+        ×
+      </button>
+
+      <h2>Create Account</h2>
+
+      <p>
+        Your Trigon verification code:
+      </p>
+
+      <div id="accountCode" class="verificationCode">
+        ------
+      </div>
+
+      <p>
+        Email this code to Trigon for manual approval.
+      </p>
+
+      <input
+        id="newAccountName"
+        type="text"
+        placeholder="New username"
+      >
+
+      <button id="generateAccountButton">
+        Generate Code
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= RECOVERY EMAIL MODAL ================= -->
+  <div id="recoveryEmailModal" class="modal hidden">
+
+    <div class="modalBox">
+
+      <button class="closeModal" data-close="recoveryEmailModal">
+        ×
+      </button>
+
+      <h2>Recovery Email</h2>
+
+      <p>
+        Add an email address for account recovery.
+      </p>
+
+      <input
+        id="recoveryEmailInput"
+        type="email"
+        placeholder="Recovery email"
+      >
+
+      <button id="saveRecoveryEmailButton">
+        Save Recovery Email
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= RESET PASSWORD MODAL ================= -->
+  <div id="resetPasswordModal" class="modal hidden">
+
+    <div class="modalBox">
+
+      <button class="closeModal" data-close="resetPasswordModal">
+        ×
+      </button>
+
+      <h2>Reset Password</h2>
+
+      <input
+        id="oldPasswordInput"
+        type="password"
+        placeholder="Current password"
+      >
+
+      <input
+        id="newPasswordInput"
+        type="password"
+        placeholder="New password"
+      >
+
+      <input
+        id="confirmPasswordInput"
+        type="password"
+        placeholder="Confirm new password"
+      >
+
+      <button id="savePasswordButton">
+        Update Password
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= SECURITY ALERT ================= -->
+  <div id="securityAlertModal" class="modal hidden">
+
+    <div class="modalBox securityAlert">
+
+      <div class="alertIcon">
+        🛡️
+      </div>
+
+      <h2 id="securityAlertTitle">
+        Suspicious Activity Detected
+      </h2>
+
+      <p id="securityAlertText">
+        Trigon has isolated suspicious browser content.
+      </p>
+
+      <button id="isolateThreatButton">
+        Isolate & Close
+      </button>
+
+      <button id="cancelThreatButton">
+        Cancel
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= TAB LOADING ================= -->
+  <div id="tabLoading" class="tabLoading hidden">
+
+    <div class="tabLoadingBox">
+
+      <div class="tabLoadingSymbol">
+        ∆
+      </div>
+
+      <p id="tabLoadingText">
+        Loading tab...
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
+
+  <script src="script.js"></script>
+
+</body>
+        </html>
